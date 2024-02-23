@@ -21,5 +21,9 @@ public class OwnerController {
         return ownerRepository.save(newOwner);
     }
 
+    @GetMapping("/owners")
+    List<Owner> getAllOwners() {
+        return ownerRepository.findAll();
+    }
 
 }
