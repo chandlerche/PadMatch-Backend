@@ -9,6 +9,9 @@ public class Owner {
     @Id
     @GeneratedValue
     private int id;
+
+    private int numbers_of_properties;
+    private int numbers_of_units;
     private String owner_name;
     private int manager_id;
     private String phone;
@@ -150,5 +153,21 @@ public class Owner {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public int getNumbers_of_properties() {
+        return numbers_of_properties;
+    }
+
+    public void setNumbers_of_properties(int numbers_of_properties) {
+        this.numbers_of_properties = numbers_of_properties;
+    }
+
+    public int getNumbers_of_units() {
+        return numbers_of_units;
+    }
+
+    public void setNumbers_of_units(int numbers_of_units) {
+        this.numbers_of_units = numbers_of_units;
     }
 }
