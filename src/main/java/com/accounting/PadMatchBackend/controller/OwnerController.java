@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@CrossOrigin("http://localhost:3000") // this helps connect frontend and backend
 public class OwnerController {
 
     @Autowired
