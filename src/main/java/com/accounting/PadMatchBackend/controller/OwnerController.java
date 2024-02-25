@@ -30,4 +30,28 @@ public class OwnerController {
         return ownerRepository.findById(id).orElseThrow(()->new OwnerNotFoundException(id));
     }
 
+    @PutMapping("/owners/{id}")
+    Owner updateOwner(@RequestBody Owner newOwner, @PathVariable int id) {
+        return ownerRepository.findById(id).map(owner -> {
+            owner.setAddress(newOwner.getAddress());
+            owner.setOwner_name(newOwner.getOwner_name());
+            owner.setAlternate_phone(newOwner.getAlternate_phone());
+            owner.setCheck_memo(newOwner.getCheck_memo());
+            owner.setCity(newOwner.getCity());
+            owner.setDraw_account(newOwner.getDraw_account());
+            owner.setEmail(newOwner.getEmail());
+            owner.setManager_id(newOwner.getManager_id());
+            owner.setMonthly_report(newOwner.getMonthly_report());
+            owner.setNotes(newOwner.getNotes());
+            owner.setPayment_method(newOwner.getPayment_method());
+            owner.setPhone(newOwner.getPhone());
+            owner.setReceives_1099(newOwner.getReceives_1099());
+            owner.setState(newOwner.getState());
+            owner.setZipcode(newOwner.getZipcode());
+            owner.setNumbers_of_properties(newOwner.getNumbers_of_properties());
+            owner.setNumbers_of_units(newOwner.getNumbers_of_units());
+            return ownerRepository.save(owner);
+        }).orElseThrow(()->new OwnerNotFoundException(id));
+    }
+
 }
