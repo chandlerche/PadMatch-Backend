@@ -54,4 +54,13 @@ public class OwnerController {
         }).orElseThrow(()->new OwnerNotFoundException(id));
     }
 
+    @DeleteMapping("/owners/{id}")
+    String deleteOwner(@PathVariable int id) {
+        if(!ownerRepository.existsById(id)) {
+            throw new OwnerNotFoundException(id);
+        }
+        ownerRepository.deleteById(id);
+        return "Owner with id " + id + " has been deleted successfully.";
+    }
+
 }
