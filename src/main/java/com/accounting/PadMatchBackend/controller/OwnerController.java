@@ -1,5 +1,6 @@
 package com.accounting.PadMatchBackend.controller;
 
+import com.accounting.PadMatchBackend.exception.OwnerNotFoundException;
 import com.accounting.PadMatchBackend.model.Owner;
 import com.accounting.PadMatchBackend.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class OwnerController {
     @GetMapping("/owners")
     List<Owner> getAllOwners() {
         return ownerRepository.findAll();
+    }
+
+    @GetMapping("/owners/{id}")
+    Owner getOwnerById(@PathVariable int id) {
+        return ownerRepository.findById(id).orElseThrow(()->new OwnerNotFoundException(id));
     }
 
 }
